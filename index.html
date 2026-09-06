@@ -19,8 +19,16 @@
     </header>
     <main>
       <h1>Our products:</h1>
+      <div class="sort-container">
+        <label for="sortBox">Sort by:</label>
+        <select id="sortBox">
+          <option value="all">All</option>
+          <option value="male">Mens</option>
+          <option value="female">Womens</option>
+        </select>
+      </div>
       <section>
-        <div>
+        <div id="products-area">
           <!----filter from JS-->
         </div>
         <!---- jackets From JS ---->
@@ -30,6 +38,6 @@
       <a href="/privacy/index.html">Privacy</a>
       <a href="/terms/index.html">Terms and conditions</a>
     </footer>
-    <script></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
