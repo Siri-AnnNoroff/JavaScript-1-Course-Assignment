@@ -36,3 +36,19 @@ button {
     background-color: black;
     color: aliceblue;
 }
+.cart {
+    position: relative;
+    display: inline-block;
+}
+
+  .cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #FF6600;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
