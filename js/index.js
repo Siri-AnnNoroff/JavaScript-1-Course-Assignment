@@ -44,6 +44,10 @@ function displayJackets(product) {
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";
   productCard.appendChild(addToCartBtn);
+
+  addToCartBtn.addEventListener("click", () => {
+    addToCart(product);
+  });
 }
 
 // sorting jackets by gender
