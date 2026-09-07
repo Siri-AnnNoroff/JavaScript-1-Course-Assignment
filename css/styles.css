@@ -8,6 +8,10 @@ header, footer {
     font-weight: bolder;
 }
 
+h1 {
+    text-align: center;
+}
+
 .fa-cart-shopping {
     color: green;
     font-size: 40px;
@@ -22,19 +26,27 @@ header, footer {
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
     background-color: brown;
     margin: 10px;
     border: solid 5px black;
     border-radius: 10px;
+    align-items: center;
 }
 
 
 img {
+    margin: 10px;
     width: 150px;
+    height: 150px;
+    border-radius: 10px;
+  
 }
 button {
     background-color: black;
     color: aliceblue;
+    border-radius: 5px;
 }
 .cart {
     position: relative;

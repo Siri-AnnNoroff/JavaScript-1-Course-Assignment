@@ -43,6 +43,7 @@ function displayJackets(product) {
 
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";
+  addToCartBtn.classList.add("add-product");
   productCard.appendChild(addToCartBtn);
 
   addToCartBtn.addEventListener("click", () => {
