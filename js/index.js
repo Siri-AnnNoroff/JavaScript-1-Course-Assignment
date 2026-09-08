@@ -28,14 +28,18 @@ function displayJackets(product) {
   productCard.classList.add("product-card");
   productsSection.appendChild(productCard);
 
+  const link = document.createElement("a");
+  link.href = `/product/index.html?id=${product.id}`;
+  productCard.appendChild(link);
+
   const image = document.createElement("img");
   image.src = product.image.url;
   image.alt = product.image.alt;
-  productCard.appendChild(image);
+  link.appendChild(image);
 
   const name = document.createElement("h3");
   name.textContent = product.title;
-  productCard.appendChild(name);
+  link.appendChild(name);
 
   const price = document.createElement("p");
   price.textContent = currencySymbol + product.price;
@@ -74,3 +78,5 @@ function renderFilteredJackets(gender) {
 
   filtered.forEach((jacket) => displayJackets(jacket));
 }
+
+//targeting cards for product/index.html

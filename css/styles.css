@@ -8,6 +8,11 @@ header, footer {
     font-weight: bolder;
 }
 
+a {
+    text-decoration: none;
+    color: #FF6600;
+}
+
 h1 {
     text-align: center;
 }
