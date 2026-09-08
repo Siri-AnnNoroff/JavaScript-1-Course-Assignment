@@ -41,8 +41,7 @@ h1 {
 }
 
 .product-details {
-    display: flex;
-    flex-direction: row;
+  justify-self: center;
 }
 
 img {
@@ -56,8 +55,13 @@ button {
     background-color: black;
     color: aliceblue;
     border-radius: 5px;
+    width: 150px;
 
-    margin: 10px;
+}
+
+.size-button {
+    background-color: #FF6600;
+    width: 50px;
 }
 .cart {
     position: relative;

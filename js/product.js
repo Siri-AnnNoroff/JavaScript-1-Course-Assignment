@@ -23,36 +23,40 @@ async function fetchSingleJacket() {
 }
 
 function displaySingleJacket(jacket) {
+  const name = document.createElement("h1");
+  name.textContent = jacket.title;
+  productDetails.appendChild(name);
+
   const image = document.createElement("img");
   image.src = jacket.image.url;
   image.alt = jacket.image.alt;
   productDetails.appendChild(image);
 
-  const name = document.createElement("h3");
-  name.textContent = jacket.title;
-  productDetails.appendChild(name);
+  const description = document.createElement("p");
+  description.textContent = jacket.description;
+  productDetails.appendChild(description);
 
   const price = document.createElement("p");
   price.textContent = currencySymbol + jacket.price;
   productDetails.appendChild(price);
 
-  const description = document.createElement("p");
-  description.textContent = jacket.description;
-  productDetails.appendChild(description);
-
   jacket.sizes.forEach((size) => {
     const sizeBtn = document.createElement("button");
+    sizeBtn.classList.add("size-button");
     sizeBtn.textContent = size;
     productDetails.appendChild(sizeBtn);
   });
-
+  /*
   const basecolor = document.createElement("p");
   basecolor.textContent = jacket.baseColor;
   productDetails.appendChild(basecolor);
 
-  const tags = document.createElement("p");
-  tags.textContent = jacket.tags;
-  productDetails.appendChild(tags);
+  jacket.tags.forEach((tag) => {
+    const jacketTags = document.createElement("p");
+    jacketTags.textContent = tag;
+    productDetails.appendChild(jacketTags);
+  });
+  */
 
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";
