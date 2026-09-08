@@ -1,3 +1,5 @@
+"use strict";
+
 const url = "https://v2.api.noroff.dev/rainy-days";
 const productDetails = document.querySelector(".product-details");
 
