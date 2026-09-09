@@ -16,6 +16,9 @@ async function fetchSingleJacket() {
     const result = await response.json();
 
     const singleProduct = result.data.find((jacket) => jacket.id === productId);
+    if (!singleProduct) {
+      throw new Error(`No product found`);
+    }
     displaySingleJacket(singleProduct);
   } catch (error) {
     console.error("Failed to fetch products" + error);
