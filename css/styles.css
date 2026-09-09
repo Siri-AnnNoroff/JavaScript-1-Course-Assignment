@@ -29,10 +29,7 @@ h1 {
     background-color: purple;
     justify-items: center;
 }
-.product-section {
-    background-color: aliceblue;
 
-}
 .product-card {
     display: flex;
     flex-direction: column;

@@ -28,3 +28,12 @@ loadCart();
 function updateCartBadge() {
   cartBadge.textContent = cart.length;
 }
+
+//clear cart
+const clearCartBtn = document.querySelector(".clear-cart");
+
+clearCartBtn.addEventListener("click", () => {
+  cartBadge.textContent = 0;
+  localStorage.clear();
+  cart = [];
+});
