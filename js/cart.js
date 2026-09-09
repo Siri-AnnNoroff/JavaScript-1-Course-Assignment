@@ -3,10 +3,15 @@ let cart = [];
 const cartBadge = document.querySelector(".cart-badge");
 
 function addToCart(jacket) {
-  cart.push(jacket);
+  const alreadyInCart = cart.find((item) => item.id === jacket.id);
+
+  if (alreadyInCart) {
+    alreadyInCart.quantity += 1;
+  } else {
+    cart.push({ ...jacket, quantity: 1 });
+  }
   saveCart();
   updateCartBadge();
-  console.log(`${jacket.title} added to cart!`);
 }
 
 function saveCart() {
@@ -26,7 +31,8 @@ loadCart();
 // cart counter
 
 function updateCartBadge() {
-  cartBadge.textContent = cart.length;
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartBadge.textContent = totalItems;
 }
 
 //clear cart

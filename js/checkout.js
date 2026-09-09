@@ -28,7 +28,7 @@ let totalCost = 0;
 
 function calculateCost() {
   cart.forEach((product) => {
-    totalCost += product.price;
+    totalCost += product.price * product.quantity;
   });
   return totalCost;
 }
