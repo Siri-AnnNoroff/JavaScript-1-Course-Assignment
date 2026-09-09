@@ -22,7 +22,7 @@ async function fetchJackets() {
 fetchJackets();
 
 function displayJackets(product) {
-  const productsSection = document.getElementById("products-area");
+  const productsSection = document.getElementById("products-section");
 
   const productCard = document.createElement("div");
   productCard.classList.add("product-card");
@@ -63,7 +63,7 @@ sortBox.addEventListener("change", () => {
 });
 
 function renderFilteredJackets(gender) {
-  const productsSection = document.getElementById("products-area");
+  const productsSection = document.getElementById("products-section");
   productsSection.innerHTML = "";
 
   let filtered = [];
