@@ -122,3 +122,25 @@ button {
  text-align: left;
 
   }
+
+Toast
+
+  .toast-container {
+  position: fixed;
+ }
+
+ .toast {
+  padding: 15px 20px;
+  color: #176977;
+  font-family: sans-serif;
+  font-weight: bold;
+
+}
+
+.toast.success {
+  background-color:  rgb(43, 216, 144);
+}
+
+.toast.error {
+  background-color: #79111c;
+}

@@ -55,6 +55,7 @@ function displayJackets(product) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
+    showToast("You have added: " + product.title + " to you cart!");
   });
 }
 
@@ -82,4 +83,20 @@ function renderFilteredJackets(gender) {
   filtered.forEach((jacket) => displayJackets(jacket));
 }
 
-//targeting cards for product/index.html
+//Toast
+
+const toastContainer = document.querySelector(".toast-container");
+
+/**
+@param {string} message
+ */
+
+function showToast(message) {
+  const toastElement = document.createElement("div");
+  toastElement.classList.add("toast", "success");
+  toastElement.textContent = message;
+  toastContainer.appendChild(toastElement);
+  setTimeout(() => {
+    toastElement.remove();
+  }, 5000);
+}

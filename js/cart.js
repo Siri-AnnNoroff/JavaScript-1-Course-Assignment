@@ -43,3 +43,20 @@ clearCartBtn.addEventListener("click", () => {
   localStorage.clear();
   cart = [];
 });
+
+//Toast
+
+/**
+@param {string} message
+ */
+
+function showToast(message) {
+  const toastContainer = document.querySelector(".toast-container");
+  const toastElement = document.createElement("div");
+  toastElement.classList.add("toast", "success");
+  toastElement.textContent = message;
+  toastContainer.appendChild(toastElement);
+  setTimeout(() => {
+    toastElement.remove();
+  }, 5000);
+}

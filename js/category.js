@@ -60,8 +60,11 @@ function displayJackets(product) {
   addToCartBtn.classList.add("add-product");
   productCard.appendChild(addToCartBtn);
 
+  const toastContainer = document.querySelector(".toast-container");
+
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
+    showToast("You have added: " + product.title + " to you cart!");
   });
 }
 
