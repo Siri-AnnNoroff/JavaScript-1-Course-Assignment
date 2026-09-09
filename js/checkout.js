@@ -45,6 +45,20 @@ function displayCost() {
   const totalCost = document.createElement("p");
   totalCost.textContent = currencySymbol + calculateCost();
   totalSection.appendChild(totalCost);
+
+  const placeOrderLink = document.createElement("a");
+  placeOrderLink.href = `/checkout/confirmation/index.html`;
+  totalSection.appendChild(placeOrderLink);
+
+  const placeOrderBtn = document.createElement("button");
+  placeOrderBtn.textContent = "Place order";
+  placeOrderLink.appendChild(placeOrderBtn);
 }
 
 displayCost();
+
+placeOrderBtn.addEventListener("click", () => {
+  cartBadge.textContent = 0;
+  localStorage.clear();
+  cart = [];
+});
