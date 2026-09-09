@@ -52,13 +52,14 @@ function displayCost() {
 
   const placeOrderBtn = document.createElement("button");
   placeOrderBtn.textContent = "Place order";
+
   placeOrderLink.appendChild(placeOrderBtn);
+
+  placeOrderBtn.addEventListener("click", () => {
+    cartBadge.textContent = 0;
+    localStorage.clear();
+    cart = [];
+  });
 }
 
 displayCost();
-
-placeOrderBtn.addEventListener("click", () => {
-  cartBadge.textContent = 0;
-  localStorage.clear();
-  cart = [];
-});

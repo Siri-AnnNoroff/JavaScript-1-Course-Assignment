@@ -13,6 +13,7 @@ function getCategoryFromPage() {
 }
 
 async function fetchCategoryJackets() {
+  const productsSection = document.getElementById("products-section");
   try {
     const response = await fetch(url);
     if (!response.ok) {

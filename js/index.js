@@ -6,6 +6,8 @@ let allJackets = [];
 const currencySymbol = "$";
 
 async function fetchJackets() {
+  const productsSection = document.getElementById("products-area");
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -13,6 +15,7 @@ async function fetchJackets() {
     }
     const result = await response.json();
     allJackets = result.data;
+
     renderFilteredJackets("all");
   } catch (error) {
     console.error("Failed to fetch products" + error);
