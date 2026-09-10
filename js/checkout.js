@@ -4,9 +4,17 @@ const url = "https://v2.api.noroff.dev/rainy-days";
 const currencySymbol = "$";
 
 const checkoutSection = document.querySelector(".checkout-section");
-console.log(cart);
+const checkoutPage = document.querySelector(".checkout-page");
+
+function emptyCart() {
+  return cart.length === 0;
+}
 
 function displayCheckout() {
+  if (emptyCart()) {
+    checkoutSection.textContent = "Your cart is empty.";
+    return;
+  }
   cart.forEach((product) => {
     const card = document.createElement("div");
     checkoutSection.appendChild(card);
@@ -49,7 +57,10 @@ function calculateCost() {
 const total = calculateCost();
 
 function displayCost() {
-  totalSection.innerHTML = "";
+  if (emptyCart()) {
+    totalSection.textContent = "";
+    return;
+  }
   cart.forEach((product) => {
     const priceList = document.createElement("p");
     priceList.textContent = currencySymbol + product.price;

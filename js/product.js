@@ -24,7 +24,7 @@ async function fetchSingleJacket() {
     }
     displaySingleJacket(singleProduct);
   } catch (error) {
-    productDetails.textContent = "Failed to fetch product...";
+    productDetails.textContent = "Product not found.";
     console.error("Failed to fetch product" + error);
   }
 }
