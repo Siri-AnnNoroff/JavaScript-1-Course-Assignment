@@ -3,6 +3,8 @@
 const url = "https://v2.api.noroff.dev/rainy-days";
 const currencySymbol = "$";
 
+//decides wich gender to show
+
 function getCategoryFromPage() {
   if (window.location.pathname.includes("womens")) {
     return "Female";
@@ -11,6 +13,8 @@ function getCategoryFromPage() {
   }
   return null;
 }
+
+//fetch chosen gender
 
 async function fetchCategoryJackets() {
   const productsSection = document.querySelector(".products-section");
@@ -32,6 +36,8 @@ async function fetchCategoryJackets() {
   }
 }
 
+//show chosen gender
+
 function displayJackets(product) {
   const productsSection = document.querySelector(".products-section");
 
@@ -40,7 +46,6 @@ function displayJackets(product) {
   productsSection.appendChild(productCard);
 
   const link = document.createElement("a");
-
   link.href = `/product/index.html?id=${product.id}`;
   productCard.appendChild(link);
 

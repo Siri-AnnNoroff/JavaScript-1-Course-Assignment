@@ -6,9 +6,12 @@ const currencySymbol = "$";
 const checkoutSection = document.querySelector(".checkout-section");
 const checkoutPage = document.querySelector(".checkout-page");
 
+// helper function for empty cart
 function emptyCart() {
   return cart.length === 0;
 }
+
+//display jackets in cart
 
 function displayCheckout() {
   if (emptyCart()) {
@@ -52,6 +55,8 @@ displayCheckout();
 
 const totalSection = document.querySelector(".total-section");
 
+//calculating total sum
+
 function calculateCost() {
   let totalCost = 0;
   cart.forEach((product) => {
@@ -59,7 +64,10 @@ function calculateCost() {
   });
   return totalCost;
 }
+
 const total = calculateCost();
+
+//showing pricelist and sum
 
 function displayCost() {
   totalSection.innerHTML = "";
@@ -77,6 +85,7 @@ function displayCost() {
       product.title + " " + currencySymbol + product.price;
     totalSection.appendChild(priceList);
   });
+
   const totalSum = document.createElement("p");
   totalSum.textContent = "Total: " + currencySymbol + calculateCost();
   totalSum.classList.add("total-sum");
@@ -88,7 +97,6 @@ function displayCost() {
 
   const placeOrderBtn = document.createElement("button");
   placeOrderBtn.textContent = "Place order";
-
   placeOrderLink.appendChild(placeOrderBtn);
 
   placeOrderBtn.addEventListener("click", () => {

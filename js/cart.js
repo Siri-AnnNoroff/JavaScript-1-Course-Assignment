@@ -1,10 +1,12 @@
-let cart = [];
+"use strict";
 
+let cart = [];
 const cartBadge = document.querySelector(".cart-badge");
+
+//add to cart
 
 function addToCart(jacket) {
   const alreadyInCart = cart.find((item) => item.id === jacket.id);
-
   if (alreadyInCart) {
     alreadyInCart.quantity += 1;
   } else {
@@ -14,9 +16,13 @@ function addToCart(jacket) {
   updateCartBadge();
 }
 
+//save cart
+
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+//load saved cart
 
 function loadCart() {
   const savedCart = localStorage.getItem("cart");
@@ -51,11 +57,9 @@ function removeFromCart(jacket) {
   const jacketInCart = cart.find((item) => item.id === jacket.id);
   if (jacketInCart) {
     jacketInCart.quantity -= 1;
-
     cart = cart.filter((jacket) => jacket.quantity > 0);
   }
   saveCart();
-
   updateCartBadge();
   displayCheckout();
   displayCost();
@@ -70,7 +74,6 @@ function removeFromCart(jacket) {
 
 function showToast(message, type = "success") {
   const toastContainer = document.querySelector(".toast-container");
-
   const toastElement = document.createElement("div");
   toastElement.classList.add("toast", type);
   toastElement.textContent = message;

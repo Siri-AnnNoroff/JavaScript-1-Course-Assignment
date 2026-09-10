@@ -1,22 +1,19 @@
 const url = "https://v2.api.noroff.dev/rainy-days";
 const productDetails = document.querySelector(".product-details");
-
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
-console.log(productId);
-
 const currencySymbol = "$";
+
+//fetching single product
 
 async function fetchSingleJacket() {
   productDetails.textContent = "Loading our jackets...";
-
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
     const result = await response.json();
-
     const singleProduct = result.data.find((jacket) => jacket.id === productId);
     productDetails.textContent = "";
     if (!singleProduct) {
@@ -28,6 +25,8 @@ async function fetchSingleJacket() {
     console.error("Failed to fetch product" + error);
   }
 }
+
+//showing single product
 
 function displaySingleJacket(jacket) {
   const name = document.createElement("h1");
@@ -51,7 +50,6 @@ function displaySingleJacket(jacket) {
 
     const salePrice = document.createElement("p");
     salePrice.textContent = currencySymbol + jacket.discountedPrice;
-
     productDetails.appendChild(salePrice);
     salePrice.classList.add("onSale");
   } else {
@@ -65,17 +63,6 @@ function displaySingleJacket(jacket) {
     sizeBtn.textContent = size;
     productDetails.appendChild(sizeBtn);
   });
-  /*
-  const basecolor = document.createElement("p");
-  basecolor.textContent = jacket.baseColor;
-  productDetails.appendChild(basecolor);
-
-  jacket.tags.forEach((tag) => {
-    const jacketTags = document.createElement("p");
-    jacketTags.textContent = tag;
-    productDetails.appendChild(jacketTags);
-  });
-  */
 
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";
