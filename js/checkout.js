@@ -87,7 +87,8 @@ function displayCost() {
   });
 
   const totalSum = document.createElement("p");
-  totalSum.textContent = "Total: " + currencySymbol + calculateCost();
+  totalSum.textContent =
+    "Total: " + currencySymbol + calculateCost().toFixed(2);
   totalSum.classList.add("total-sum");
   totalSection.appendChild(totalSum);
 

@@ -84,6 +84,5 @@ function renderFilteredJackets(gender) {
       (jacket) => jacket.gender.toLowerCase() === gender.toLowerCase(),
     );
   }
-
   filtered.forEach((jacket) => displayJackets(jacket));
 }
