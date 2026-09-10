@@ -36,7 +36,7 @@ function displayJackets(product) {
   productsSection.appendChild(productCard);
 
   const link = document.createElement("a");
-  link.href = `/product/index.html?id=${product.id}`;
+  link.href = `product/index.html?id=${product.id}`;
   productCard.appendChild(link);
 
   const image = document.createElement("img");
