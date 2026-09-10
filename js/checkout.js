@@ -13,6 +13,7 @@ function emptyCart() {
 function displayCheckout() {
   if (emptyCart()) {
     checkoutSection.textContent = "Your cart is empty.";
+    checkoutSection.classList.add("empty-cart");
     return;
   }
   cart.forEach((product) => {
@@ -32,6 +33,10 @@ function displayCheckout() {
     price.textContent = currencySymbol + product.price;
     card.appendChild(price);
 
+    const quantity = document.createElement("p");
+    quantity.textContent = "Quantity: " + product.quantity;
+    card.appendChild(quantity);
+
     const removeBtm = document.createElement("button");
     removeBtm.textContent = "Remove from cart";
     removeBtm.classList.add("remove-product");
@@ -39,10 +44,7 @@ function displayCheckout() {
 
     removeBtm.addEventListener("click", () => {
       removeFromCart(product);
-      showToast(
-        "You have removed: " + product.title + " from your cart!",
-        "error",
-      );
+      showToast("You have removed: " + product.title + " from your cart!");
     });
   });
 }
@@ -60,17 +62,24 @@ function calculateCost() {
 const total = calculateCost();
 
 function displayCost() {
+  totalSection.innerHTML = "";
   if (emptyCart()) {
-    totalSection.textContent = "";
+    const indexLink = document.createElement("a");
+    indexLink.href = `/index.html?id=`;
+    indexLink.classList.add("index-link");
+    indexLink.textContent = "View our jackets";
+    totalSection.appendChild(indexLink);
     return;
   }
   cart.forEach((product) => {
     const priceList = document.createElement("p");
-    priceList.textContent = currencySymbol + product.price;
+    priceList.textContent =
+      product.title + " " + currencySymbol + product.price;
     totalSection.appendChild(priceList);
   });
   const totalSum = document.createElement("p");
-  totalSum.textContent = currencySymbol + calculateCost();
+  totalSum.textContent = "Total: " + currencySymbol + calculateCost();
+  totalSum.classList.add("total-sum");
   totalSection.appendChild(totalSum);
 
   const placeOrderLink = document.createElement("a");
