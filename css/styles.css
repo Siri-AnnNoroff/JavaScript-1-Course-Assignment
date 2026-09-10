@@ -144,3 +144,11 @@ Toast
 .toast.error {
   background-color: #79111c;
 }
+.fullPrice {
+text-decoration:line-through;
+}
+
+.onSale {
+  color: #79111c;
+  font-weight: bold;
+}

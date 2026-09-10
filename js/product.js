@@ -43,9 +43,21 @@ function displaySingleJacket(jacket) {
   description.textContent = jacket.description;
   productDetails.appendChild(description);
 
-  const price = document.createElement("p");
-  price.textContent = currencySymbol + jacket.price;
-  productDetails.appendChild(price);
+  const originalPrice = document.createElement("p");
+  if (jacket.onSale === true) {
+    originalPrice.classList.add("fullPrice");
+    originalPrice.textContent = currencySymbol + jacket.price;
+    productDetails.appendChild(originalPrice);
+
+    const salePrice = document.createElement("p");
+    salePrice.textContent = currencySymbol + jacket.discountedPrice;
+
+    productDetails.appendChild(salePrice);
+    salePrice.classList.add("onSale");
+  } else {
+    originalPrice.textContent = currencySymbol + jacket.price;
+    productDetails.appendChild(originalPrice);
+  }
 
   jacket.sizes.forEach((size) => {
     const sizeBtn = document.createElement("button");
@@ -72,7 +84,7 @@ function displaySingleJacket(jacket) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(jacket);
-    showToast("You have added: " + jacket.title + " to you cart!", "sucess");
+    showToast("You have added: " + jacket.title + " to you cart!", "success");
   });
 }
 fetchSingleJacket();
