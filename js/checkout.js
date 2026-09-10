@@ -24,7 +24,7 @@ function displayCheckout() {
     checkoutSection.appendChild(card);
 
     const link = document.createElement("a");
-    link.href = `/product/index.html?id=${product.id}`;
+    link.href = `../product/index.html?id=${product.id}`;
     card.appendChild(link);
 
     const image = document.createElement("img");
@@ -77,7 +77,7 @@ function displayCost() {
   totalSection.innerHTML = "";
   if (emptyCart()) {
     const indexLink = document.createElement("a");
-    indexLink.href = `/index.html?id=`;
+    indexLink.href = `../index.html?id=`;
     indexLink.classList.add("index-link");
     indexLink.textContent = "View our jackets";
     totalSection.appendChild(indexLink);
@@ -102,7 +102,7 @@ function displayCost() {
   totalSection.appendChild(totalSum);
 
   const placeOrderLink = document.createElement("a");
-  placeOrderLink.href = `/checkout/confirmation/index.html`;
+  placeOrderLink.href = `checkout/confirmation/index.html`;
   totalSection.appendChild(placeOrderLink);
 
   const placeOrderBtn = document.createElement("button");
