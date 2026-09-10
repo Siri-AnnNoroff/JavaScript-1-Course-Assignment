@@ -142,7 +142,7 @@ text-decoration:line-through;
   margin-top: 15px;
 }
 
-.empty-cart {
+.empty-cart, .success-page {
   font-size: 24px;
   text-align: center;
   margin: 30px;

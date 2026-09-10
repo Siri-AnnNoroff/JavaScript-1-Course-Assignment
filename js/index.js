@@ -1,7 +1,6 @@
 "use strict";
 
 const url = "https://v2.api.noroff.dev/rainy-days";
-const itemsAtIndex = 3;
 let allJackets = [];
 const currencySymbol = "$";
 

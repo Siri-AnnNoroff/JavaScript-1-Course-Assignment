@@ -69,8 +69,6 @@ function calculateCost() {
   return totalCost;
 }
 
-const total = calculateCost();
-
 //showing pricelist and sum
 
 function displayCost() {
