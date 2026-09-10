@@ -100,7 +100,7 @@ function displayCost() {
   totalSection.appendChild(totalSum);
 
   const placeOrderLink = document.createElement("a");
-  placeOrderLink.href = `checkout/confirmation/index.html`;
+  placeOrderLink.href = `confirmation/index.html`;
   totalSection.appendChild(placeOrderLink);
 
   const placeOrderBtn = document.createElement("button");
