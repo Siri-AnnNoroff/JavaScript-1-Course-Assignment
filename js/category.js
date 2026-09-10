@@ -64,7 +64,7 @@ function displayJackets(product) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
-    showToast("You have added: " + product.title + " to you cart!");
+    showToast("You have added: " + product.title + " to you cart!", "success");
   });
 }
 

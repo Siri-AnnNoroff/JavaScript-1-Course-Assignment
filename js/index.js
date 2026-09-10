@@ -5,6 +5,8 @@ const itemsAtIndex = 3;
 let allJackets = [];
 const currencySymbol = "$";
 
+//fetch jackets from API
+
 async function fetchJackets() {
   const productsSection = document.getElementById("products-area");
   productsSection.textContent = "Loading our jackets...";
@@ -24,6 +26,8 @@ async function fetchJackets() {
 }
 
 fetchJackets();
+
+//showing jackets on page
 
 function displayJackets(product) {
   const productsSection = document.getElementById("products-area");
@@ -56,7 +60,7 @@ function displayJackets(product) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
-    showToast("You have added: " + product.title + " to you cart!");
+    showToast("You have added: " + product.title + " to you cart!", "success");
   });
 }
 

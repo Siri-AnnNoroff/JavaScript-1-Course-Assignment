@@ -65,12 +65,14 @@ function removeFromCart(jacket) {
 
 /**
 @param {string} message
+@param {string} type
  */
 
-function showToast(message) {
+function showToast(message, type = "success") {
   const toastContainer = document.querySelector(".toast-container");
+
   const toastElement = document.createElement("div");
-  toastElement.classList.add("toast", "success");
+  toastElement.classList.add("toast", type);
   toastElement.textContent = message;
   toastContainer.appendChild(toastElement);
   setTimeout(() => {

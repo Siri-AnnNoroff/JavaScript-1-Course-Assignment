@@ -72,7 +72,7 @@ function displaySingleJacket(jacket) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(jacket);
-    showToast("You have added: " + jacket.title + " to you cart!");
+    showToast("You have added: " + jacket.title + " to you cart!", "sucess");
   });
 }
 fetchSingleJacket();

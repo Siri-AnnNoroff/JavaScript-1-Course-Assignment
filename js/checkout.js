@@ -39,7 +39,10 @@ function displayCheckout() {
 
     removeBtm.addEventListener("click", () => {
       removeFromCart(product);
-      showToast("You have removed: " + product.title + " from your cart!");
+      showToast(
+        "You have removed: " + product.title + " from your cart!",
+        "error",
+      );
     });
   });
 }
