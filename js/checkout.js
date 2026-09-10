@@ -23,14 +23,18 @@ function displayCheckout() {
     const card = document.createElement("div");
     checkoutSection.appendChild(card);
 
+    const link = document.createElement("a");
+    link.href = `/product/index.html?id=${product.id}`;
+    card.appendChild(link);
+
     const image = document.createElement("img");
     image.src = product.image.url;
     image.alt = product.image.alt;
-    card.appendChild(image);
+    link.appendChild(image);
 
     const title = document.createElement("h3");
     title.textContent = product.title;
-    card.appendChild(title);
+    link.appendChild(title);
 
     const price = document.createElement("p");
     price.textContent = currencySymbol + product.price;
@@ -82,7 +86,12 @@ function displayCost() {
   cart.forEach((product) => {
     const priceList = document.createElement("p");
     priceList.textContent =
-      product.title + " " + currencySymbol + product.price;
+      product.title +
+      " x " +
+      product.quantity +
+      " " +
+      currencySymbol +
+      product.price;
     totalSection.appendChild(priceList);
   });
 
