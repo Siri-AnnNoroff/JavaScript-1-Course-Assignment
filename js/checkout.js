@@ -8,25 +8,39 @@ console.log(cart);
 
 function displayCheckout() {
   cart.forEach((product) => {
+    const card = document.createElement("div");
+    checkoutSection.appendChild(card);
+
     const image = document.createElement("img");
     image.src = product.image.url;
     image.alt = product.image.alt;
-    checkoutSection.appendChild(image);
+    card.appendChild(image);
 
     const title = document.createElement("h3");
     title.textContent = product.title;
-    checkoutSection.appendChild(title);
+    card.appendChild(title);
 
     const price = document.createElement("p");
     price.textContent = currencySymbol + product.price;
-    checkoutSection.appendChild(price);
+    card.appendChild(price);
+
+    const removeBtm = document.createElement("button");
+    removeBtm.textContent = "Remove from cart";
+    removeBtm.classList.add("remove-product");
+    card.appendChild(removeBtm);
+
+    removeBtm.addEventListener("click", () => {
+      removeFromCart(product);
+      showToast("You have removed: " + product.title + " from your cart!");
+    });
   });
 }
 displayCheckout();
 
-let totalCost = 0;
+const totalSection = document.querySelector(".total-section");
 
 function calculateCost() {
+  let totalCost = 0;
   cart.forEach((product) => {
     totalCost += product.price * product.quantity;
   });
@@ -34,17 +48,16 @@ function calculateCost() {
 }
 const total = calculateCost();
 
-const totalSection = document.querySelector(".total-section");
-
 function displayCost() {
+  totalSection.innerHTML = "";
   cart.forEach((product) => {
     const priceList = document.createElement("p");
     priceList.textContent = currencySymbol + product.price;
     totalSection.appendChild(priceList);
   });
-  const totalCost = document.createElement("p");
-  totalCost.textContent = currencySymbol + calculateCost();
-  totalSection.appendChild(totalCost);
+  const totalSum = document.createElement("p");
+  totalSum.textContent = currencySymbol + calculateCost();
+  totalSection.appendChild(totalSum);
 
   const placeOrderLink = document.createElement("a");
   placeOrderLink.href = `/checkout/confirmation/index.html`;
@@ -61,5 +74,5 @@ function displayCost() {
     cart = [];
   });
 }
-
+calculateCost();
 displayCost();

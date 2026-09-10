@@ -7,7 +7,7 @@ const currencySymbol = "$";
 
 async function fetchJackets() {
   const productsSection = document.getElementById("products-area");
-
+  productsSection.textContent = "Loading our jackets...";
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -18,6 +18,7 @@ async function fetchJackets() {
 
     renderFilteredJackets("all");
   } catch (error) {
+    productsSection.textContent = "Failed to fetch products";
     console.error("Failed to fetch products" + error);
   }
 }
@@ -81,22 +82,4 @@ function renderFilteredJackets(gender) {
   }
 
   filtered.forEach((jacket) => displayJackets(jacket));
-}
-
-//Toast
-
-const toastContainer = document.querySelector(".toast-container");
-
-/**
-@param {string} message
- */
-
-function showToast(message) {
-  const toastElement = document.createElement("div");
-  toastElement.classList.add("toast", "success");
-  toastElement.textContent = message;
-  toastContainer.appendChild(toastElement);
-  setTimeout(() => {
-    toastElement.remove();
-  }, 5000);
 }

@@ -44,6 +44,23 @@ clearCartBtn.addEventListener("click", () => {
   cart = [];
 });
 
+// remove from cart
+
+function removeFromCart(jacket) {
+  checkoutSection.innerHTML = "";
+  const jacketInCart = cart.find((item) => item.id === jacket.id);
+  if (jacketInCart) {
+    jacketInCart.quantity -= 1;
+
+    cart = cart.filter((jacket) => jacket.quantity > 0);
+  }
+  saveCart();
+
+  updateCartBadge();
+  displayCheckout();
+  displayCost();
+}
+
 //Toast
 
 /**

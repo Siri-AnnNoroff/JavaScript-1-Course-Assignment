@@ -8,6 +8,8 @@ console.log(productId);
 const currencySymbol = "$";
 
 async function fetchSingleJacket() {
+  productDetails.textContent = "Loading our jackets...";
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -16,12 +18,14 @@ async function fetchSingleJacket() {
     const result = await response.json();
 
     const singleProduct = result.data.find((jacket) => jacket.id === productId);
+    productDetails.textContent = "";
     if (!singleProduct) {
       throw new Error(`No product found`);
     }
     displaySingleJacket(singleProduct);
   } catch (error) {
-    console.error("Failed to fetch products" + error);
+    productDetails.textContent = "Failed to fetch product...";
+    console.error("Failed to fetch product" + error);
   }
 }
 

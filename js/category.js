@@ -13,7 +13,8 @@ function getCategoryFromPage() {
 }
 
 async function fetchCategoryJackets() {
-  const productsSection = document.getElementById("products-section");
+  const productsSection = document.querySelector(".products-section");
+  productsSection.textContent = "Loading our jackets...";
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -21,11 +22,12 @@ async function fetchCategoryJackets() {
     }
     const result = await response.json();
     const category = getCategoryFromPage();
-
+    productsSection.innerHTML = "";
     const filtered = result.data.filter((jacket) => jacket.gender === category);
 
     filtered.forEach((jacket) => displayJackets(jacket));
   } catch (error) {
+    productsSection.textContent = "Failed to fetch products";
     console.error("Failed to fetch products: " + error);
   }
 }
@@ -59,8 +61,6 @@ function displayJackets(product) {
   addToCartBtn.textContent = "Add to cart";
   addToCartBtn.classList.add("add-product");
   productCard.appendChild(addToCartBtn);
-
-  const toastContainer = document.querySelector(".toast-container");
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
