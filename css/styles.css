@@ -124,10 +124,6 @@ button, .index-link {
   background-color:  rgb(43, 216, 144);
 }
 
-.toast.error {
-  background-color: #79111c;
-}
-
 .fullPrice {
 text-decoration:line-through;
 }
