@@ -3,7 +3,7 @@
 const url = "https://v2.api.noroff.dev/rainy-days";
 const currencySymbol = "$";
 
-//decides wich gender to show
+//decides which gender to show
 
 function getCategoryFromPage() {
   if (window.location.pathname.includes("womens")) {
@@ -69,7 +69,7 @@ function displayJackets(product) {
 
   addToCartBtn.addEventListener("click", () => {
     addToCart(product);
-    showToast("You have added: " + product.title + " to you cart!", "success");
+    showToast("You have added: " + product.title + " to your cart!", "success");
   });
 }
 
