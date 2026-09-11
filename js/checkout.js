@@ -129,7 +129,7 @@ function displayCost() {
 
   placeOrderBtn.addEventListener("click", () => {
     cartBadge.textContent = 0;
-    localStorage.clear();
+    localStorage.removeItem("cart");
     cart = [];
   });
 }
