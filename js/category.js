@@ -74,9 +74,20 @@ function displayJackets(product) {
   name.textContent = product.title;
   link.appendChild(name);
 
-  const price = document.createElement("p");
-  price.textContent = currencySymbol + product.price;
-  productCard.appendChild(price);
+  const originalPrice = document.createElement("p");
+  if (product.onSale === true) {
+    originalPrice.classList.add("fullPrice");
+    originalPrice.textContent = currencySymbol + product.price;
+    productCard.appendChild(originalPrice);
+
+    const salePrice = document.createElement("p");
+    salePrice.textContent = currencySymbol + product.discountedPrice;
+    productCard.appendChild(salePrice);
+    salePrice.classList.add("onSale");
+  } else {
+    originalPrice.textContent = currencySymbol + product.price;
+    productCard.appendChild(originalPrice);
+  }
 
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";

@@ -36,9 +36,20 @@ function displayCheckout() {
     title.textContent = product.title;
     link.appendChild(title);
 
-    const price = document.createElement("p");
-    price.textContent = currencySymbol + product.price;
-    card.appendChild(price);
+    const originalPrice = document.createElement("p");
+    if (product.onSale === true) {
+      originalPrice.classList.add("fullPrice");
+      originalPrice.textContent = currencySymbol + product.price;
+      card.appendChild(originalPrice);
+
+      const salePrice = document.createElement("p");
+      salePrice.textContent = currencySymbol + product.discountedPrice;
+      card.appendChild(salePrice);
+      salePrice.classList.add("onSale");
+    } else {
+      originalPrice.textContent = currencySymbol + product.price;
+      card.appendChild(originalPrice);
+    }
 
     const quantity = document.createElement("p");
     quantity.textContent = "Quantity: " + product.quantity;
@@ -64,6 +75,10 @@ const totalSection = document.querySelector(".total-section");
 function calculateCost() {
   let totalCost = 0;
   cart.forEach((product) => {
+    let itempPrice = product.price;
+    if (product.onSale === true) {
+      itempPrice = product.discountedPrice;
+    }
     totalCost += product.price * product.quantity;
   });
   return totalCost;
@@ -82,6 +97,11 @@ function displayCost() {
     return;
   }
   cart.forEach((product) => {
+    let itemPrice = product.price;
+    if (product.onSale === true) {
+      itemPrice = product.discountedPrice;
+    }
+
     const priceList = document.createElement("p");
     priceList.textContent =
       product.title +
@@ -89,7 +109,7 @@ function displayCost() {
       product.quantity +
       " " +
       currencySymbol +
-      product.price;
+      itemPrice;
     totalSection.appendChild(priceList);
   });
 

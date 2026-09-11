@@ -90,5 +90,9 @@ function displaySingleJacket(jacket) {
     addToCart(jacket);
     showToast("You have added: " + jacket.title + " to your cart!", "success");
   });
+
+  const baseColor = document.createElement("p");
+  baseColor.textContent = "Base color: " + jacket.baseColor;
+  productDetails.appendChild(baseColor);
 }
 fetchSingleJacket();

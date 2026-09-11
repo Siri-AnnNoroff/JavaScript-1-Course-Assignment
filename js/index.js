@@ -27,7 +27,6 @@ async function fetchJackets() {
   productsSection.appendChild(loadingWrapper);
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 13000));
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
@@ -66,9 +65,20 @@ function displayJackets(product) {
   name.textContent = product.title;
   link.appendChild(name);
 
-  const price = document.createElement("p");
-  price.textContent = currencySymbol + product.price;
-  productCard.appendChild(price);
+  const originalPrice = document.createElement("p");
+  if (product.onSale === true) {
+    originalPrice.classList.add("fullPrice");
+    originalPrice.textContent = currencySymbol + product.price;
+    productCard.appendChild(originalPrice);
+
+    const salePrice = document.createElement("p");
+    salePrice.textContent = currencySymbol + product.discountedPrice;
+    productCard.appendChild(salePrice);
+    salePrice.classList.add("onSale");
+  } else {
+    originalPrice.textContent = currencySymbol + product.price;
+    productCard.appendChild(originalPrice);
+  }
 
   const addToCartBtn = document.createElement("button");
   addToCartBtn.textContent = "Add to cart";
@@ -96,6 +106,8 @@ function renderFilteredJackets(gender) {
 
   if (gender === "all") {
     filtered = allJackets;
+  } else if (gender === "sale") {
+    filtered = allJackets.filter((jacket) => jacket.onSale === true);
   } else {
     filtered = allJackets.filter(
       (jacket) => jacket.gender.toLowerCase() === gender.toLowerCase(),

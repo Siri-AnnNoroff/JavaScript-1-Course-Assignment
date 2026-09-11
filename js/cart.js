@@ -48,6 +48,7 @@ clearCartBtn.addEventListener("click", () => {
   cartBadge.textContent = 0;
   localStorage.clear();
   cart = [];
+  showToast("Your cart was cleared!", "success");
 });
 
 // remove from cart
