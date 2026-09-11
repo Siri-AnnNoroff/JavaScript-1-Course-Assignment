@@ -18,7 +18,23 @@ function getCategoryFromPage() {
 
 async function fetchCategoryJackets() {
   const productsSection = document.querySelector(".products-section");
-  productsSection.textContent = "Loading our jackets...";
+  productsSection.innerHTML = "";
+
+  const loadingWrapper = document.createElement("div");
+  loadingWrapper.classList.add("loading-wrapper");
+
+  const spinner = document.createElement("div");
+  spinner.classList.add("spinner");
+  const icon = document.createElement("i");
+  icon.classList.add("fa-regular", "fa-compass");
+  spinner.appendChild(icon);
+  loadingWrapper.appendChild(spinner);
+
+  const loadingText = document.createElement("p");
+  loadingText.textContent = "Loading our jackets...";
+  loadingWrapper.appendChild(loadingText);
+
+  productsSection.appendChild(loadingWrapper);
   try {
     const response = await fetch(url);
     if (!response.ok) {
